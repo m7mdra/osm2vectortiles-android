@@ -5,12 +5,11 @@ ext {
 }
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "29.0.2"
+    compileSdk 34
     defaultConfig {
         applicationId "com.roblabs.osm2vectortiles_android"
-        minSdkVersion 15
-        targetSdkVersion 26
+        minSdk 21
+        targetSdk 34
         versionCode 6
         versionName "1.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -21,15 +20,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
-
+    implementation('androidx.test.espresso:espresso-core:3.4.0')
+    implementation "androidx.appcompat:appcompat:1.6.1"
     // add the MapLibre SDK dependency below
-    implementation 'org.maplibre.gl:android-sdk:9.4.2'
+    implementation("com.mapbox.maps:android:11.3.1")
 }
